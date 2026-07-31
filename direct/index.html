@@ -774,10 +774,10 @@ function exportXlsx(){
   const blob=new Blob([bytes],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
   const url=URL.createObjectURL(blob);
   const a=document.createElement("a");
-  a.href=url; a.download="Смета_Директ_ЭкоХимПрибор.xlsx";
+  a.href=url; a.download="Смета_Директ.xlsx";
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(()=>URL.revokeObjectURL(url),1500);
-  showToast("Файл «Смета_Директ_ЭкоХимПрибор.xlsx» сохранён");
+  showToast("Файл «Смета_Директ.xlsx» сохранён");
 }
 document.getElementById("export").addEventListener("click", exportXlsx);
 
