@@ -90,7 +90,7 @@
   .sheet{min-width:680px}
   .grid{
     display:grid;
-    grid-template-columns:40px minmax(240px,1fr) 80px 116px 128px 36px;
+    grid-template-columns:58px minmax(240px,1fr) 80px 116px 128px 36px;
     align-items:stretch;
   }
   .col-head{
@@ -224,6 +224,13 @@
     .ro-scale{display:none}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  .drag{cursor:grab;color:var(--muted);user-select:none;font-size:12px;line-height:1;opacity:.45;transition:opacity .12s,color .12s}
+  .drag:hover{opacity:1;color:var(--ink)}
+  .drag:active{cursor:grabbing}
+  .drag-cell{gap:6px}
+  .row.dragging{opacity:.4}
+  .row.dragover-top{box-shadow:inset 0 2px 0 0 var(--accent)}
+  .row.dragover-bot{box-shadow:inset 0 -2px 0 0 var(--accent)}
   .name-ta{resize:none;overflow:hidden;display:block;white-space:pre-wrap;overflow-wrap:anywhere;min-height:19px}
 </style>
 
@@ -481,7 +488,7 @@ function render(){
       const off = r.included ? "" : " off";
       if(r.type==="note"){
         html += `<div class="grid row note${off}" data-row="${r.id}" data-sec="${secId}">
-          <div class="cell mid"><input type="checkbox" class="chk" data-toggle="${r.id}" ${r.included?"checked":""} aria-label="Включить в смету"></div>
+          <div class="cell mid drag-cell"><span class="drag" draggable="true" data-drag="${r.id}" title="Перетащите строку, чтобы переместить">⠿</span><input type="checkbox" class="chk" data-toggle="${r.id}" ${r.included?"checked":""} aria-label="Включить в смету"></div>
           <div class="cell"><textarea rows="1" class="name-in name-ta" data-name="${r.id}">${esc(r.name)}</textarea></div>
           <div class="cell mid dash">—</div>
           <div class="cell num dash">—</div>
@@ -493,7 +500,7 @@ function render(){
           ? `<span class="sum-out">${esc(r.priceText)}</span>`
           : `<input type="number" class="num-in" data-price="${r.id}" value="${r.price}" min="0" step="100">`;
         html += `<div class="grid row fixed${off}" data-row="${r.id}" data-sec="${secId}">
-          <div class="cell mid"><input type="checkbox" class="chk" data-toggle="${r.id}" ${r.included?"checked":""} aria-label="Включить в смету"></div>
+          <div class="cell mid drag-cell"><span class="drag" draggable="true" data-drag="${r.id}" title="Перетащите строку, чтобы переместить">⠿</span><input type="checkbox" class="chk" data-toggle="${r.id}" ${r.included?"checked":""} aria-label="Включить в смету"></div>
           <div class="cell"><textarea rows="1" class="name-in name-ta" data-name="${r.id}">${esc(r.name)}</textarea></div>
           <div class="cell mid">${r.hours!=null?`<input type="number" class="num-in" data-hours="${r.id}" value="${r.hours}" min="0" step="1" style="text-align:center">`:`<span class="dash">—</span>`}</div>
           <div class="cell num">${priceCell}</div>
@@ -502,7 +509,7 @@ function render(){
         </div>`;
       } else {
         html += `<div class="grid row work${off}" data-row="${r.id}" data-sec="${secId}">
-          <div class="cell mid"><input type="checkbox" class="chk" data-toggle="${r.id}" ${r.included?"checked":""} aria-label="Включить в смету"></div>
+          <div class="cell mid drag-cell"><span class="drag" draggable="true" data-drag="${r.id}" title="Перетащите строку, чтобы переместить">⠿</span><input type="checkbox" class="chk" data-toggle="${r.id}" ${r.included?"checked":""} aria-label="Включить в смету"></div>
           <div class="cell"><textarea rows="1" class="name-in name-ta" data-name="${r.id}">${esc(r.name)}</textarea></div>
           <div class="cell mid"><input type="number" class="num-in" data-hours="${r.id}" value="${r.hours}" min="0" step="1" style="text-align:center"></div>
           <div class="cell num"><input type="number" class="num-in" data-rate="${r.id}" value="${r.rate}" min="0" step="100"></div>
@@ -577,6 +584,48 @@ body.addEventListener("change", e=>{
     const f=findRow(id); if(f){ f.r.included=t.checked; t.closest(".row").classList.toggle("off",!t.checked); updateTotals(); }
   }
 });
+
+/* ======================= ПЕРЕТАСКИВАНИЕ СТРОК ======================= */
+let draggedId=null;
+body.addEventListener("dragstart", e=>{
+  const h=e.target.closest("[data-drag]"); if(!h) return;
+  draggedId=h.dataset.drag;
+  const row=h.closest(".row"); if(row) row.classList.add("dragging");
+  e.dataTransfer.effectAllowed="move";
+  try{ e.dataTransfer.setData("text/plain", draggedId); }catch(_){}
+});
+body.addEventListener("dragend", ()=>{
+  draggedId=null;
+  body.querySelectorAll(".dragging,.dragover-top,.dragover-bot").forEach(el=>el.classList.remove("dragging","dragover-top","dragover-bot"));
+});
+body.addEventListener("dragover", e=>{
+  if(!draggedId) return;
+  const row=e.target.closest(".row"); if(!row) return;
+  e.preventDefault(); e.dataTransfer.dropEffect="move";
+  const rect=row.getBoundingClientRect();
+  const after=(e.clientY-rect.top)>rect.height/2;
+  body.querySelectorAll(".dragover-top,.dragover-bot").forEach(el=>el.classList.remove("dragover-top","dragover-bot"));
+  row.classList.add(after?"dragover-bot":"dragover-top");
+});
+body.addEventListener("drop", e=>{
+  if(!draggedId) return;
+  const row=e.target.closest(".row"); if(!row) return;
+  e.preventDefault();
+  const rect=row.getBoundingClientRect();
+  moveRow(draggedId, row.dataset.row, (e.clientY-rect.top)>rect.height/2);
+});
+function moveRow(srcId,dstId,after){
+  if(!srcId||srcId===dstId) return;
+  let src=null;
+  for(const s of state){ const i=s.rows.findIndex(r=>r.id===srcId); if(i>=0){ src={s,i,r:s.rows[i]}; break; } }
+  if(!src) return;
+  src.s.rows.splice(src.i,1);
+  let dst=null;
+  for(const s of state){ const i=s.rows.findIndex(r=>r.id===dstId); if(i>=0){ dst={s,i}; break; } }
+  if(!dst){ src.s.rows.push(src.r); render(); return; }
+  dst.s.rows.splice(dst.i+(after?1:0),0,src.r);
+  render();
+}
 
 body.addEventListener("click", e=>{
   const t = e.target.closest("button");
