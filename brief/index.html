@@ -32,8 +32,11 @@
 
   .q{display:grid;grid-template-columns:46px 1fr;gap:4px 6px;margin:0 0 22px;break-inside:avoid;page-break-inside:avoid}
   .qnum{color:var(--num);font-weight:700;font-size:13px;padding-top:2px;font-variant-numeric:tabular-nums}
-  .qlabel{color:var(--muted);font-size:14.5px;line-height:1.5;margin-bottom:10px}
+  .qlabel{color:var(--navy);font-weight:700;font-size:15px;line-height:1.4;margin:0}
   .qlabel b{color:var(--navy);font-weight:700}
+  .qhint{color:var(--muted);font-size:13.5px;line-height:1.5;margin:4px 0 0;font-weight:400}
+  .qbody>.field,.qbody>.opts,.qbody>.chips{margin-top:11px}
+  .qbody>.ref:first-of-type{margin-top:11px}
 
   /* поле-ответ: линейки + левая планка */
   .field{
@@ -129,14 +132,16 @@
     <div class="q">
       <div class="qnum">1.1</div>
       <div class="qbody">
-        <div class="qlabel"><b>Миссия компании и ее УТП (уникальное торговое предложение).</b> Чем вы реально полезны клиенту в 2026 году?</div>
+        <div class="qlabel"><b>Миссия компании и ее УТП (уникальное торговое предложение).</b></div>
+        <div class="qhint">Чем вы реально полезны клиенту в 2026 году?</div>
         <textarea class="field" data-k="q1_1" rows="1"></textarea>
       </div>
     </div>
     <div class="q">
       <div class="qnum">1.2</div>
       <div class="qbody">
-        <div class="qlabel"><b>Основные продукты/услуги.</b> Какие 2-3 продукта являются маржинальными и должны быть выведены в топ?</div>
+        <div class="qlabel"><b>Основные продукты/услуги.</b></div>
+        <div class="qhint">Какие 2-3 продукта являются маржинальными и должны быть выведены в топ?</div>
         <textarea class="field" data-k="q1_2" rows="1"></textarea>
       </div>
     </div>
@@ -145,7 +150,8 @@
     <div class="q">
       <div class="qnum">2.1</div>
       <div class="qbody">
-        <div class="qlabel"><b>Основные конкуренты (3-5).</b> Укажите сайты. Что они делают лучше вас, а где вы их обходите?</div>
+        <div class="qlabel"><b>Основные конкуренты (3-5).</b></div>
+        <div class="qhint">Укажите сайты. Что они делают лучше вас, а где вы их обходите?</div>
         <textarea class="field tall" data-k="q2_1" rows="1"></textarea>
       </div>
     </div>
@@ -154,7 +160,8 @@
     <div class="q">
       <div class="qnum">3.1</div>
       <div class="qbody">
-        <div class="qlabel"><b>Основной ЛПР (Лицо, принимающее решение).</b> Пол, возраст, доход, чем пользуется в свободное время.</div>
+        <div class="qlabel"><b>Основной ЛПР (Лицо, принимающее решение).</b></div>
+        <div class="qhint">Пол, возраст, доход, чем пользуется в свободное время.</div>
         <textarea class="field" data-k="q3_1" rows="1"></textarea>
       </div>
     </div>
@@ -184,7 +191,8 @@
     <div class="q">
       <div class="qnum">5.1</div>
       <div class="qbody">
-        <div class="qlabel"><b>Аналитика.</b> Используете ли вы сквозную аналитику, вебвизор, карты кликов (Яндекс.Метрика / Google Analytics 4)?</div>
+        <div class="qlabel"><b>Аналитика.</b></div>
+        <div class="qhint">Используете ли вы сквозную аналитику, вебвизор, карты кликов (Яндекс.Метрика / Google Analytics 4)?</div>
         <textarea class="field" data-k="q5_1" rows="1"></textarea>
       </div>
     </div>
@@ -193,14 +201,16 @@
     <div class="q">
       <div class="qnum">6.1</div>
       <div class="qbody">
-        <div class="qlabel"><b>Фирменный стиль.</b> Приложите: Логотип (в векторе), палитру CMYK/RGB, шрифты. Есть ли гайдлайн?</div>
+        <div class="qlabel"><b>Фирменный стиль.</b></div>
+        <div class="qhint">Приложите: Логотип (в векторе), палитру CMYK/RGB, шрифты. Есть ли гайдлайн?</div>
         <textarea class="field" data-k="q6_1" rows="1"></textarea>
       </div>
     </div>
     <div class="q">
       <div class="qnum">6.2</div>
       <div class="qbody">
-        <div class="qlabel"><b>Медиа-контент.</b> Какие материалы готовы:</div>
+        <div class="qlabel"><b>Медиа-контент.</b></div>
+        <div class="qhint">Какие материалы готовы:</div>
       <div class="opts">
       <label class="opt"><input type="checkbox" data-k="q6_2_a"><span>Фото товаров (предметная съемка)</span></label>
       <label class="opt"><input type="checkbox" data-k="q6_2_b"><span>Видео-обзоры/Reels</span></label>
@@ -212,7 +222,8 @@
     <div class="q">
       <div class="qnum">6.3</div>
       <div class="qbody">
-        <div class="qlabel"><b>Тексты.</b> Кто пишет тексты? Есть ли SEO-специалист, который подготовил мета-теги (Title, Description) и LSI-фразы?</div>
+        <div class="qlabel"><b>Тексты.</b></div>
+        <div class="qhint">Кто пишет тексты? Есть ли SEO-специалист, который подготовил мета-теги (Title, Description) и LSI-фразы?</div>
         <textarea class="field" data-k="q6_3" rows="1"></textarea>
       </div>
     </div>
@@ -221,7 +232,8 @@
     <div class="q">
       <div class="qnum">7.1</div>
       <div class="qbody">
-        <div class="qlabel"><b>Стиль.</b> Опишите визуальное настроение:</div>
+        <div class="qlabel"><b>Стиль.</b></div>
+        <div class="qhint">Опишите визуальное настроение:</div>
       <div class="chips">
         <label class="chip"><input type="checkbox" data-k="q7_1_a"><span>Минимализм</span></label>
         <label class="chip"><input type="checkbox" data-k="q7_1_b"><span>Техно</span></label>
@@ -235,14 +247,16 @@
     <div class="q">
       <div class="qnum">7.2</div>
       <div class="qbody">
-        <div class="qlabel"><b>Адаптив и микро-анимация.</b> Насколько важна плавность интерфейса? Нужны ли «скелетон-загрузки» и эффекты при скролле (Parallax)?</div>
+        <div class="qlabel"><b>Адаптив и микро-анимация.</b></div>
+        <div class="qhint">Насколько важна плавность интерфейса? Нужны ли «скелетон-загрузки» и эффекты при скролле (Parallax)?</div>
         <textarea class="field" data-k="q7_2" rows="1"></textarea>
       </div>
     </div>
     <div class="q">
       <div class="qnum">7.3</div>
       <div class="qbody">
-        <div class="qlabel"><b>Референсы (ссылки).</b> Приложите ссылки на сайты с идеальным для вас:</div>
+        <div class="qlabel"><b>Референсы (ссылки).</b></div>
+        <div class="qhint">Приложите ссылки на сайты с идеальным для вас:</div>
         <div class="ref"><div class="ref-l">Типографикой</div><input class="linefield" data-k="q7_3_typo"></div>
         <div class="ref"><div class="ref-l">Рич-анимацией</div><input class="linefield" data-k="q7_3_anim"></div>
         <div class="ref"><div class="ref-l">Сайт с понятной навигацией</div><input class="linefield" data-k="q7_3_nav"></div>
@@ -253,14 +267,16 @@
     <div class="q">
       <div class="qnum">8.1</div>
       <div class="qbody">
-        <div class="qlabel"><b>Вопросы к разработчику.</b> Есть ли что-то, что вы категорически не хотите видеть на сайте? (Слайдеры, попапы с подпиской, тяжелые видео).</div>
+        <div class="qlabel"><b>Вопросы к разработчику.</b></div>
+        <div class="qhint">Есть ли что-то, что вы категорически не хотите видеть на сайте? (Слайдеры, попапы с подпиской, тяжелые видео).</div>
         <textarea class="field tall" data-k="q8_1" rows="1"></textarea>
       </div>
     </div>
     <div class="q">
       <div class="qnum">8.2</div>
       <div class="qbody">
-        <div class="qlabel"><b>Любые идеи.</b> Может быть, есть идея сделать интерактивный квиз, калькулятор стоимости или AR-примерку? Напишите здесь.</div>
+        <div class="qlabel"><b>Любые идеи.</b></div>
+        <div class="qhint">Может быть, есть идея сделать интерактивный квиз, калькулятор стоимости или AR-примерку? Напишите здесь.</div>
         <textarea class="field tall" data-k="q8_2" rows="1"></textarea>
       </div>
     </div>
