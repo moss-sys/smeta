@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Регламент запуска (SEO/Директ) — Ефремов Медиа</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#22254F; --accent:#3B45C4; --num:#5B62C6; --secnum:#9297D6;
+    --ink:#2B2B3A; --muted:#5E5F70; --line:#DFE1EA; --bar:#C6CAEC; --chipbd:#D6D8E5;
+    --sheet:#FFFFFF; --desk:#EEF0F5;
+    --sans:"Montserrat","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--desk);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .sheet{max-width:820px;margin:24px auto;background:var(--sheet);padding:46px 54px 64px;
+    box-shadow:0 1px 3px rgba(30,33,70,.08),0 12px 40px rgba(30,33,70,.10)}
+
+  .mast{border-bottom:2px solid var(--navy);padding-bottom:16px;margin-bottom:30px}
+  .logo{height:34px;width:auto;display:block}
+  .doc-title{font-size:31px;font-weight:800;letter-spacing:-.01em;color:var(--navy);margin:0 0 10px;line-height:1.15}
+  .lede{color:var(--muted);font-size:14px;max-width:70ch;margin:0 0 30px;line-height:1.55}
+
+  .sec{background:var(--navy);color:#fff;font-weight:700;font-size:15px;
+    padding:13px 22px;border-radius:22px;margin:32px 0 18px;display:flex;align-items:center;break-inside:avoid}
+  .sec-n{color:var(--secnum);font-weight:800;margin-right:14px;font-variant-numeric:tabular-nums}
+  .subsec{color:var(--num);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;
+    padding:0 0 8px 2px;margin:22px 0 14px;border-bottom:1.5px solid var(--line)}
+
+  .q{margin:0 0 20px;break-inside:avoid;page-break-inside:avoid}
+  .qlabel{color:var(--navy);font-weight:700;font-size:15px;line-height:1.4;margin:0}
+  .qhint{color:var(--muted);font-size:13.5px;line-height:1.5;margin:4px 0 0;font-weight:400}
+
+  .field{display:block;width:100%;resize:none;overflow:hidden;border:0;outline:none;
+    font-family:var(--sans);font-size:14.5px;color:var(--ink);
+    line-height:30px;min-height:60px;padding:0 6px 0 14px;margin-top:11px;
+    border-left:3px solid var(--bar);
+    background-image:linear-gradient(to bottom, transparent 29px, var(--line) 29px, var(--line) 30px);
+    background-size:100% 30px;background-position:0 0;background-attachment:local;
+    print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .field.tall{min-height:90px}
+  .field:focus{border-left-color:var(--accent)}
+
+  .callout{margin:14px 0 0;padding:14px 18px;border-radius:12px;background:#F4F5FC;
+    color:var(--ink);font-size:13.5px;line-height:1.55;border:1px solid #E4E6F4;break-inside:avoid}
+  .callout.warn{background:#FBF3E7;border-color:#F0DEBE;color:#6B531F}
+  .callout:first-of-type{margin-top:34px}
+
+  .footer-note{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+
+  .toolbar{position:sticky;top:0;z-index:10;background:rgba(238,240,245,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .toolbar-in{max-width:820px;margin:0 auto;display:flex;gap:10px;align-items:center;padding:11px 54px}
+  .tb-title{font-size:12px;color:var(--muted)}
+  .spacer{flex:1}
+  .btn{font-family:var(--sans);cursor:pointer;border-radius:9px;font-size:13px;font-weight:600;
+    padding:9px 16px;border:1px solid var(--chipbd);background:#fff;color:var(--navy);display:inline-flex;align-items:center;gap:8px;transition:.12s}
+  .btn:hover{border-color:var(--num)}
+  .btn-primary{background:var(--navy);border-color:var(--navy);color:#fff}
+  .btn-primary:hover{background:#171a3d}
+  .btn svg{width:15px;height:15px}
+  .saved{font-size:11.5px;color:#3a9c78;opacity:0;transition:opacity .3s}
+  .saved.show{opacity:1}
+
+  @media (max-width:680px){ .sheet{padding:28px 20px 44px} .toolbar-in{padding:11px 20px} .doc-title{font-size:23px} }
+  @media print{
+    @page{size:A4;margin:16mm 15mm}
+    body{background:#fff}
+    .toolbar{display:none!important}
+    .sheet{box-shadow:none;margin:0;max-width:none;padding:0;width:100%}
+    .field,.callout{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <div class="toolbar-in">
+      <span class="tb-title">Регламент запуска · Ефремов Медиа</span>
+      <span class="saved" id="saved">Сохранено</span>
+      <div class="spacer"></div>
+      <button class="btn" id="clear">Очистить</button>
+      <button class="btn btn-primary" id="pdf">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8m0 0L5 7m3 3 3-3M2.5 11v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2"/></svg>
+        Скачать PDF
+      </button>
+    </div>
+  </div>
+
+  <div class="sheet" id="sheet">
+  <header class="mast">
+    <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXMAAAA8CAIAAAAboc3IAAAheElEQVR4nO1dd1gU19qfna0sdUFBEAMqRQUELKCiIoqiJmpML2psMSbXks9eUVFioonmpnpzExNzb4rJ1cTeKxY0CjZAadIERKrU7d+zO7Iuc86cOTM7RP/Y332eXJk9M3Nm5pz3vOX3vkdkNBoJO+ywww5BQQp7OTvssMMOu2Sxww472gV2ncUOO+wQHnbJYocddggPu2Sxww47hIcEPKTWaKurajldxcXFydHRgbXZgwfVOp3e+ghJkl5eHqwnNje31NbWo1qIRKRIJJNJVSoXpiYtLeqamocEFzg5KZ2dHY1GY3l5Jf2GpEilcpXLpPhXAx+fIAh3Dzemi6g12pqaOqPhcfBORIrcVa4yhvYajbaK9cOJRGKS9PBwFYvFBEc0Nmo0Gp2RIEzhRHNIkerZo+iiVZCRd7hR1Larrf9pPS4SiUSmfzs4SBUK1JuvqqrVaLRtLy1SOshdXZ3xO1NbW9/c3EI7KJPLPNxdCYKorKzRanX4VyMIwtu7o/WfDQ1N9fWNBHc4Ojq4uDhR/9ZqdZWVNbQGzs6OTk5K1sGPmH06nb66uk5vMFh/VgpSqaRDBxVrJ0Vg1PnS5ZuTpiwluGBN4nuT3niOtdmY52bn5hZZH+nYUXUh5SfWE/ftP71g0Sacnrw7+9V/vPcGdK4ePnJu7vwPCC6Y897r8+dNrm9o6tPvJfDXRQunvfP2y5iXKi4pHx4/HTy+/dsNQwb3AY9XVFT/Y+76a9fv0I736xvy+T9XQD9tenrWK68vxOnMhHFxSevmKpUKggvmLdyTnfOAeAoQPzxw0fuxiAZvTll6+fJN2sFnunQ6cWw7/l1efm3BtWu3aQeHDO67/dv1pnf4wtzMzDwuvSYybuyxXhW+/OqXTz/7D8Ed0956fsXyWdS/M7PyJkycS2uweNG0WTPbjMwfdvyZvPEbWjN3d9dLF36B3uK33w+vXP0Z9Cffzl6nTnz/N1lDJLWyPAX4etvOuBFTd+0+Bv7Eg7gjIlHv586du/iX+nPPScyWNTUPl63YOmzEVFCsEARx5WpG7PCpH2z8Rk1bk7lgz75TQ+OmbPvmN4PBgH9WfT19AX9SqKlp4nFWUXE5u073uHEZKFaERYta005XJkX0cXv4yDlOV0C8qNKyB3R9ENoHTvdjvApyBj4GX1YeJzrfgwc1y1ZsXbp8C6Cscr67GPlc129AZj4Tfvv9ME6z9PSs8RPn7Np9DKFpazTa73f8+errC8vv0200fNTVNXyy5YfpM1fjW4haLd2Ue1JobuFmhlhwKyMHs+WJk5eIdoa6Rd1OV6Yt9Pn5JVfTMjldoZJZshgMhrKyB3+XZBE/dZ7g3X8cX7HqnzZeRIx8rqKiMpxXTHlYQE8NiMLC0slTl+O0NKnWGblvTV1R38Bn9bbg/IX0qTNWYqo/ev3TQtfW8ZVx129kY7bMuAWXQSZPj0ALcIsQOgt0zaV18kLqNQ4nm4FW7ioeVLN2TBiJIMFzB2qAdZj3EMHBn3tO/LnnhOVPHnkMEgnEw22Nw0fP41wnp613qQ2serU+eZuay2jLv1uy+WMOjgMoMjPzfvppH05Lg5Uv+cmCd0+OH7+I2fJWRi4hKEQikUTSZpq0tJ/O0laEZWBrahbcv1+F+BXHqBRGsri5sbvcDQYDGHKqe9hgi7+AFdu//8MWyeLp6U4PWLTFwUNnca5z5WoGa5uDh86eOXuFU/cIgvj9f0dKSu5T/+adAvbVtl9xxor+6ZEsfJ8063b+3bslrM0KC0vz8osJQeHn50M70tLSXn4W2oiFOuzQuFdagfi1qrqO9Qosa7IF3t4dJ4wf7uSkpJy1xtZhTIUwh8X2ZzqxsbE5O6ewoqIq5dzVhsZm2q8Gg2HFyq2jEwb7+HgFBDzDFH+FDiQ3N+dnx8Z6ebo/rG/Mzy9OOZcG+iaybuenpl4fMCCc6SLOzo7jx8Wp3JylUqlYIhaTJCkmxSQpkUqcnZRjxwxFv5Zbt3LUGi1r7Hn/gdPoBgRB/PzrQejxnj26hYYENDQ2X0y9BobedTr9lk93bPl4CdNlxWLylZdH+/h4NjY2376dfzH1OqgW1dU1/Pb74Xdnv4bu4dOTvGpLR1LOpXXt6otusw/je0ExOCayR49uCrmMFItb4+UisZhUKh3i4qJojdVqiM4SFRUWMzCSFJNGg0Gr1Z04mZqZlW+L2VVQcI8WkGWFWq1Bm+QPKqoFkyyzZr406c1xBBdotbodP+757Iv/NjejtL69+07v3Wf6kM7OjmsT3xs/Lg7z+ps/WmQt0W7dypnx9upqwB+5/+AZSrJAMXnSuP+bP4XgC51On5NdEBoaiGiTkZF79+491ksVF5eDB8eOGfrplqWU2VxXVz9zViK4/qBDGHHDopPWznl8l5Ly6TNXFxTQ+5N1mz3OZc2sebLwcG9D1uCE9GtZUyaPR7c5deoyjyu7uTl//10yfnsNTFtPXDk7OLir5c8uXTotWbaFq5S1drPs2YsblLQgO7sAvYqgNRpuksXZ+REzBxOpqddXrPpncQlktjChvr5x4eLNu3Yf2/ThQhz6HI0UFxoamLRu7px5yTgz1gI3N0ZmHSbS0rPQkuXS5Rs413n4sIF2RCIRr1oxy+KNc3V1/njT4viEmbRmNbWo4I6ra5sP18W3U+Kqd6fPXEW/CEaECN8a6tvH941XIhwcpBIJaYLoEcmNWsMxL0K1fvT/IhOzQUSKSFIklYqdHGUEX9xgi+jpdPrbtxnVBIQD18XZkVNPNDDJ4uHhZv0njfCGCWsPLiLIxSQ9bjJ4ry3AsShxJQsT7xOKPXtPLV+5lStDkcKFi9deeHn+N9vWhfTqztVtHBzkDzZrAmiU1uBEooVi/8Ez6DUQzacytsbCNYCR0q1bl44dTY4eC/z8fLr4dqLJa4t1Y7kU+sNFR4XJZFLasG6BaeZAX3ElS2lpnUql9PG2VWq3B4qKy/Pyi7t368LUICe3EAw1CD5HCAbJIlfIrf+USqW2eHA1Gm12TgHX07OzWU65k12g1+vRNG5cD65UiksGv3kze9GSzfzECoWKiuoZb6++d++RY5IJItNSiPoqFPSthHqogieR4spWJqSnZ6FFeFp6Fs51wNHsDFuv5Ar6co1+1bR4BDUBVICmZnlLCODbQmXl9f+3ZG/+XVR84Qli/36UG+VsylV+l+WaMKGBSRZZ2wGJZlQxwTIxbt+5q9dzIENSyGdTSVpa1Ky+G9x+iwBWHxQGgyEpeRthM6qqates+5KtSyIcTdVoM3uYlcJwMfU6008ZmXk4JiFU6kHXQGiAH0GlhQ5NMSBuTBki7J0k8FFX17J01cG8/KdRuKBZcHv3nWoP9hMIqGZEWwnA5RNn5Fg8uKfP/EVwB44bJTunUCjJgtVs/4EzQnGiz6ZctXBMoXo+JtC+KFz2MBIImj+m/wwqGsD5b+6wiBO/wxZml40hmfp69bLVT6Nwyc4pYOI65OeXsNoCjOD4qrUwyUJTfPh9PstJBw9isSJowKEgFBaVohsIzJ09y8DIGDF8wIzpL0B/ihkUGRnZEzxuNBrR7+XpCYJev8nI7Lx4kYH+iCEaoOoGNJWJ66vglC70+C7cT6mvVy9ddTAnl38WQntArzdkMywGaencWPC2QKfTsZqu/EANknv37qNZOdAFW63WNALsEBBlZZXCSBbMoVsE0/ynTZ247avEZUtmgua9u7vrD9uTd/788ZjRg8ETT53+q72DoIKIp8zMvDJY/F+r1eXmYVEJ0Dptm4OwRQzxFNCfwGIOguhuUDQ0qJcnHsrNe7qES8q5NOhxVoUFpURwHEs6gIAOemp46ixmT8uNmzntpLCYE4vopRt4SxasVe5hHT10KpNJ5/7jDerfYA0XhdnnKhKJ1q2ZA5qpRcVliHuBrgGorLF8G+hHEoSxbjQaoU7BO3fugnMYPJdJHYAOKq5DDUpXBXnlOJ5CJvk1/rle894bDDXTKDQ0mDSXp0q47NsPd6akXsKiCEDBdSxphdBZGNYk07fIzuaQi29BWTlWKhxrCSdcycI6Qyg0A0PWz8/HuTXODwZiLNNEpXIBqSUNyHQ70OkNdbZLkH41UCPlN5lPn4WoV0ePXyBsSyzj1BnoNXSAMW8wGJqaWniMaaYluWew59jRPRbMR/GVGxs1y1Yfenp8Lrl5xTmADzI3ryiLmcnCCp2eWxKcDphTQllDlGRBBBYQKCxELecWVFXVCSNZMKPI4ES11lPASWHNmwJDIegyEFot/de7ALWUIAilElXsDqfSBA4yMnJpq4fRaMSvyQIFlFTGVTvWAG/prysZoJ/FwQESsMcEpWzGxwXOeTcG0YzSXJ4enwvoUjlw4IwtF+Q6lnQQncVWDgQFEUmev5DOtXICBcxUANZ0Z1zJguPUgYphqdXLQvMvQXVab1kEYMslrZJgWXll0vqvwWaBgX6Im9Y38CkXCKKxsbmwsI23PDu7ALPGAjd3D0dFhqb3tbSooenRHu5tqJ+cYDFjnxvTc/6cwQjZ19BgihY9JYXpbt+hu1QuAWXoOAFzjiAnizA6i9FgWMVQEY4VGZm5uLlFyPJAuDLy518OKBQyav03Go1OTsrIiJ5guUPQ08EakEfIHfR82/Tx9wUFpR07qurrG3Nzi/bsPQXlub/26phH14d1ZOdvh91Vru7myqYGg0Emk/bp08tdZfqTK86cveLv39nyZ2YWt1KG7RQwTjmX9t32XT4+Xk1NzTm5hQcPpUDlXVR0b0H6OWZUDzEp2vp5CtOna2zULE889OH6sYEBHYgnirQ0egJ6FsYnQ3wUEwlr7RchIQEyucyUi2CqvKuIiYmknIl41hBnnQX6mvfuO1XCRjRlml/QzIaIiB4gmyQ7u6CTF+NHxH2SrNv5i5d+Yn1k4IDwH3/YSO8r8KRg4Tx0e3zJkp1dsOGDf7Hkng7uE9D9GUSD8vJKGiWvX9+QX37aTHDH7j+OvTVlguXPDLwiqdQjQp9UECZKY2Pzh5u+Q7fx8/OZOGEE71vQnL+j4oMJQrT187Mo4bL6YHLSmODANhWn/2ZkZuXn5BYFBjwaHrl5RWAuPleACevLlsyYMf1FaGPQJpXKhLGGzp1P53didU0dmNPr79/5y89WxQydRDuekZE7dEg/pkvxjzVCS+OAM8R6eoByBG0E2L5oT3qDW342QRB5eXQKAGYvMrPyrdWBsymci63wBvWieEfQ58+dJLUhywH8TKPig96fMwRlFpmFyxM3i/7447jl34cOc6sUa2MJJR0sJCLjlSUkIIqKIO7b3mGBnp7uYGAXrZXzlyyY1c/Q0gGTssVvzkyZPH7E8GjMniDCWzycguZkIvbKCZxqDrYTArp3ee5ZVB18VkC7mTAyeMG8oYgnaGrSLk88dCebnUjefrh46XH0xLr8oIDQMgRVH/sQrSCX88/hFgQPYH7Zbl1N2ZugiyAnp6hdJAvmbLeeHuAZaLabLVsCREf3XraEXnAAB2DICR8Wb/yRY1hVLB/zWZ4cn1it1mJSCpjAJAFHjghaOD8W8Q3NZtGhrNtPTLhk37lLBT1LSyugyzUIrkNSzxCKhr5zHpLFlpEDnvrgAYT/1rmzpyk/1oVeI6K4uAxxd/6SBVPdaGMNAf1gSQjiK1mi+of+66s1NA0fUwXgkRtqgWWPG6470XAYH0J7ZIpLyn//3xH+5yOrecYPD1w4PxZBomtq1q5Ycygzi93d2B7QaHUUgQWn8BU/6BmGE5RIJZc/YWsIWrLfx8ckWVyACk0arQ5RG4i/ZHGAebwhs7eNzmLkNI0tlHP8eRcR0eOH7cn/2fEhzp6NUFh2n+NhldzJLqAqKqDZw5iA3hfxKngvX19v+xXcDFAomIULyixqNguXW5kcioQJiJPmvOcc7kVMMOHIMA51sJEvl+OxitrNTK6ogHiFnnnGmyCIDh0gvISqSkYmLq7frmvXziOGD3B0dDCV9RKTjkpFZERPzvYLqLMgFR/EWkd1adDASFdXJ4VcJpVKHZSKbl07D4gO5+Se8PR0f3ZsrLOzIxUmlMmkffuG4MzY+BEDGxqaUq0MdQrbf/hj6eIZpaV03yRJklAtD8Huh4IhisT4yDKZdOqUCQ5KhU6rL7l3/8DBM6AeXn6/atfuY1yrkVrfHv37iLhAkiQ3bz3NxH9vadGtXHN4/ZqE3qGmQSwAYG9pxfJZHwD7BP70y/6JE+OPHqOzpd1VLr6+nW4w55pCkTAqxtfXSy6XUQWVHR2V4xh8WCA32pzs8rdaQyAs1dotcHJ0oELL3p0ggbxq5lLbuJJl0YJpo0YOsnFTQfAlWOf+wCLWqCH7yabFYWFBrF2y7h14aMb0F6dPnchyGqwbAweEy+VSULL8uvMQyMc1xSP/+9GSZVsYjXns8cF1JA2L7b940eNdXye9+dysd9aCSuy1a7dZJYstK2VcbHeCMG7eeoZJuKjVutVrDyclJoT3pte4FwQeHm7T3np+x49/3rvXxq1TW1sfP2oG2H7cuLj44QMmT12O/xb8/Hy++GwlZn90MGvIFiY0AkqlYnTC4N1WgTCmsZQHJNB2byVt+PtDvks58+YhuNYQZm0rsC6RwUrrg1hDVusnaBmRyCJdCgdu2xJDh4QTX6NJLBFHR/XGLCPq4uLUt09IaAiqXC4mjKioM8FaVzUivEfyhnlgs6oa9n0ebERcbMDShcMQeqhao1+ddCT9OoeYGj6o5LXe2EtRaGigj9lzyQjgdXPyv+pgHlyFgtuQxsSokTGJq95lbVZT8xCUFAGtfJ/AQEgp2BLmqma4ksWAl+sM5v40NTUj8m6trU0w7cKSoAVfqDmu3lDVg2uFQQvUao2/f+dePbvhNA4yZxjwdv3YYg2BSW5Dh/YH27cg91dgvQsmYod0X7FkuFjMeB2NRr9m/dGr6ewFnLmCMkWjoxl3caChW1dfrnVtOYUytVCdhYGtiwDOJIiM6OHo6MC6KRiUn2LZQSU4yB8cAPl3i22WLHgZ4gpAnbuTXWDJ2TcAETiLTqjX68Hi9UqkViKIhcl7tlBTceLz8TiNKcEPzWTl+hBozxQO5DKpCxBBxMr5JgTA4EFdVy6Nl0gYB55Go1+74diVqwJvJKY2bxuWMHIQTiUaiUQcGPAMlD6OyH3jNJa0UD9L+1hDVOocU5KBBXdgtWl8vB+5V5RKhW9nL9qv+cykLYEliwqQi83N6l2tBh5k91WdnlpMdu0+BuqHvr6dBJQsDKEWnuKJ0rBGxg/EaRzVP0yomcm1CAj0+RRADMKWWDtX6ThogN/q5fFSZuGi1erXJR+79Be3/bfQoDYn6NBBRX0LNPr1DXXgaGtzHUs6rQ06C5cbkSTZoweWZl0IKxVgKYFiJrbQJUtubhHTUwtc+QkqCzYkb9v2r53l9yvr6yGJxTt/O/zR5u9WwlIzExIeZeVDe89VJEBXFN6Vn6hFvnNnL7BQHg1iMYnYQxLROehTozYehb4l2EGwwi4m65EQCNH9n1mzciRiQwitzrB+4/GLl1jKODMBfGiLjjCQeVs7C6yp21zq4xht1FkcAJ2F/ZpsDfr26UVtAsHE2bOgFJaqWllZg/BXtLSomRL68SUL1lsbHgf5JDqd/pOtO4bEToG+zcS1X3z73S7wuFQqGf/cMNu7xKaz8FyrLVGtkBCWfZH6RPaiBD+8u+anwK9BCVqUPAw6fiICO2sdC/36dlm3aqRMxihcdDrDhg+PX0jlKVyAqz16b73Y9rGiajOz+hYhhHKbi7koAJ2F8+oCIGFUDFNxTBya3Eebv5v9XtKcecmvvbEIWiSYKdwpsDWUMCqmf79QQgiMThgMktZskiwwc4QprYP1RpYXMoQ53ZNCv34hrB2GbigB3akDPIhm/di0BzKeQOJ9gz6RvutWj0IIF73emPwRf82l7aUefeiI8B5oV4uDg7x79y48Ci2DQp9TRS7Kl4Hz9TgVSI+KCkP4jK1RCUsaqq2tP3Ey9cjR80x1pJiqWwqssxAEsXzpTNuDCB4ebiuWvW11d2iXOF4U1iucHbzQntSxY4agn9cSbEZKFsjsgi4ykLLMLBwiyE1B5RFv3yVCcESGd05anSBnES4nUi/bKlwsK4Gbm3N062SDwiJ6uJa24GRZa2A6Cxg9hOrU+DeSyaSBAY8qn4HWkPW4NRgMD6wMH3xUMtBwBa7dTxBEWFjQ4oXTCNuQnDSvQwcVISigY4J3tUrLsOvk1SEkJICpmcREewljHRDQIgbQMsBgh6HbEiE0Z4PBAFInSYxduJgEqI1Buohwn6RElHAxm0UnLl/h4NCFZKhZHXl2LKpkr4URCv1elpcA3gInvoYuFeDs5IjjWce/Ue+wIEtEEi2Pqqpq+XnxqxmYUPjWEIe1/e2ZL82cAa92wwqSJJcve3vEiAHsTYXws+DsZwzXmKz+HRnRg+ncYbFRrq6t8TK4H9rI5L27k32XVmRfrdaAH9JCu4DOcFApy8zMA8NwYLQIf7m23d4K780uXNZ/cPxKmjA8F0S9IolE/OzYWE4cLk6WtQXNMAKRKxBahQoRtRp3ORwzegjmAlCIl+oNogaoFMVNsrSY6QD4WLp4xldfrHJXcdsz3NPT/bt/J7HS7fltxwWVLPX1qO0BKMC1Yqt/I8i1Y8cMwXS8gVsXNDY2/7rzkPWRHf/ZAxoyrkhvlFpD/3A//ncv2EylYqFRoSwmITw54b191q1OQPhctDrDuuRjadewGLroWeTt3ZEpohfeO1jVOmjRm8yAt8BhG6LdpaAi0wjssmD2fTBmGFtDIhGPHxf3+G+2Co0EL1gHj9rcHfP8vftORUf1dnZWkiRpNMNgmihGqVSqcnOGusRGxg8aMrjv1bTMEydTz51PKyoqY1K3QkIChgzuOzimT7++vaAeB2ixBUGizqdPXx73bGyHjioxacpJNBqNeoPBaDCKxWIPD1cEQ9daTg1gLiLbz8qfjRaFwUH+YAAveeM3V9MyRsYPampq2XfgtKVKA/QWUNF55uyV02f+CgsLqq6qPXchfc/ekxmwYoAR4YxqF4+SxvwQEe6zPjEhcf1RtVrHyHPZcHT92tGsiYusalTv3kFnYPt5Whu20OFqecfgHWpqH/772//FDu2nVDo8MlHNM0UkEskVMuvKSTm5RT//cgC8+NZPf5w3500PDzeZTEqKSaPBeB5WdzL9Wta9e/cfsUuYHT99Inu24d0i90FnKq6qVCoo709zsxpqnt9jKLiLK1muXM1IGDsL+pPKzeW3Xz+xLi5tgUIhjxkUScXwikvKR4ycAUr6b7atjRsWRbQ/oBMv/27JxJfmQ9u7u7vu/Pljf//OcF3D6mo+Pp59InuBMTl3lYt3pw6Yw33a1InQ/b0PHzl/+AhjHSm5XLbg/bcQl62ra3j7nTWoG5tcRR6vvTqWt85iy67bMLNoVOK6I2oN3LJQa/SJSUc2Jo3t2QOZ1MP29UeNioFKlrDQx+on1BoSIes6b/p4+ybY1ggEQbz6yugNSaaMrZzcookvzoP6WU6f+Qtnj/e6uoaZ76w5sPcr0rQcMjYL6RWAHv/WR25lQDZU/PabdbFDH1OxSksr3p2znlZ7qKCwtKVFDcbLBdhzs6b24eUrt1ibdfHtRMuOo5wLvMUKdz4Lt4etrq47eeoSk0igxXqfnzAcEfDDIeYPGhiByei1xgsT4728PGwM3sye/RoY7wTBFN4Wth5eeJhP0hqUz6WlRff9jyzTD5I337bzY0YPARMIxWLSmkOALiHKdfjt2n2MOiUl5QpmpVcEcnOLqEodiAh6r7aBBQQ7wWAwgNsMeXi4WYsVagWdBngqdDr9o2nSFsLs5qvBe1NgySweHGreYOF9wECRhqFWDC2rG5r3PHYMt/qy78+bDCW2MMHT033+vMmEbejW1felF0fhtPx7JAslXNavHY0QLs0tLC5MUIjTYvPOTsr+/enEq2GxUR7m/WFarwKjL7d+IK6SRafTU+aV7TsEWOf6MiktYjE5dEhflk2jW72FFQ+qwZijZ0d38LL+fpBaCslA1RvBJAvmWwZTvHDJSBwTfIWSLBQtDcpYo8V6/fy8aamxjo4Ow5lJ4lAEBfl/uHEBZmOxmPx0yzLrmcDjAZ0cHb76crUcL6mXWeoJLVoIoneot0lzkcOtddb4KDhewNh8EFAWYPTowawde1znkG9eiJ7jJq3ozV6ZOAeDY/rQamJb7ylIc5xVVEA4co9jmlZwgx2Eni6UZMFqBroAuQb2bNkEF73zEeK5qDRZ9AYOYrE4OKjNSA0JCaDNWHBbaxDPjx+euGo26x4dSqXiw40LaHRnzBo6Fnh4uH3x+aru3Ux8UxyIGXII26k6uElzYRAurFQxcDEASyKAG1H1apu5B/Xfy1o/DXS9QaPFzCEQtgqcXAYvChMH5NmAb8AiJUtLIUXOqe39EAmKaAgjWaCdAAHGR328sfxwYJIlQRAdOVLpuJbbMLk2zf5XhUIO2uQg9WDKlAnWalSfyF60BtCtF708W70krZg8afzBfV+PToiBmtAymfT118YePfTv58fTPTsurqjwszXkctnMGS8eP/It5VzHPYvBPHFxaS+Ttneod/K60c7OdO+gsxML+8bPXLoVvQLHDetv7fjr0EFlqUVCwQ0Wibd8d190XSgArq5O1Aj0Yt5XkBM6eKiYOmk2z8NYh4eTOVORSf0PhfE/PTzcvFvrKqBhirPSDt2/X3WUbVMLqisikpRKxB4eqrhh/XHKXty7d//8xWt6nZ40V9N1clJG9Q8F3bpQpKVl5uQWqtVakYhwdFQGB3cNwUgto+HEyUtVVTU6nd7IXEKJFIlIUiQWi93dXeOGRVFPWlZeee3a7YcP63V6AykSqVQucXHRoBGRk1uUnp6p0Wg9PT3ihkXRVI+6uvqzKVfr6ur1eoNYIlY6KHx9vRBJ/TU1D7Nu55tsYLWGEImcHB08PT16BHe1DAgQKSlXy8ofUEQ4c2FfU/fN/yXFYlIiETs4yD3c3YKDu/IoQ5WXX5WTW0m9PYrRI5OJ/f3cg9p5q8P6BvWNm2WNjWq93qg3GKUSMjzMp1MnFAFHq9WdPXuluuahwaA3Gk3aR0R4MLjDd11dfcq5tIaGJqVSMSA63NOT7lm4mHqtsLDMREQwGkmRyMlJGRcXTaUONzY2X/7rZt3DBnWLWqvVmeqBtO53KTLHbMwvXCKTSR0c5E5Ojj17dKVo5Uaj8cLFa2bOq8nzYuJumP5Hoc0uMeAAFZkVDYlE7O/fuV9rwebU1Ot3C+5ROhQpEsnlsu7du4A0guKS8uvX7zQ3qw0G0wORpKhv3xBKcTMYDCdPXbpfUa3T6sQS08T06+IdGdmTaU+ilHNptXX1pmi6+ekUCsUYwJCESBY77LDDDhshjDVkhx122GENu2Sxww47hIddsthhhx3Cwy5Z7LDDDuFhlyx22GEHITj+Hx4abuFRZuNWAAAAAElFTkSuQmCC" alt="Ефремов Медиа">
+  </header>
+
+  <h1 class="doc-title">Регламент постановки задач на запуск (SEO/Директ)</h1>
+  <p class="lede">Заполняется аккаунт-менеджером/менеджером по продажам перед стартом работ. Без заполнения всех разделов запуск НЕ начинается.</p>
+
+  <div class="sec"><span class="sec-n">1</span>Описание бизнеса и продукта</div>
+  <div class="subsec">Общая информация</div>
+    <div class="q">
+      <div class="qlabel"><b>Название компании и сайт</b></div>
+      <textarea class="field" data-k="r1" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Миссия и позиционирование</b></div>
+      <div class="qhint">Чем занимается компания? Опишите простыми словами, как продукт/услуга решает проблему клиента.</div>
+      <textarea class="field tall" data-k="r2" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Продукт или услуга под запуск</b></div>
+      <div class="qhint">При возможности — конкретные категории/артикулы</div>
+      <textarea class="field" data-k="r3" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Сезонность</b></div>
+      <div class="qhint">Есть ли пики и спады спроса? В какие месяцы?</div>
+      <textarea class="field" data-k="r4" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>УТП и подтверждённые преимущества</b></div>
+      <textarea class="field" data-k="r5" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Что считается целевым действием</b></div>
+      <div class="qhint">Заявка, оплата, охваты или иное</div>
+      <textarea class="field" data-k="r6" rows="1"></textarea>
+    </div>
+  <div class="subsec">Продуктовая матрица</div>
+    <div class="q">
+      <div class="qlabel"><b>Какие категории / товары / услуги продвигаем</b></div>
+      <textarea class="field" data-k="r7" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Самый маржинальный продукт</b></div>
+      <div class="qhint">С чего получаете максимум прибыли?</div>
+      <textarea class="field" data-k="r8" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Средний чек</b></div>
+      <div class="qhint">Примерная стоимость основной покупки/услуги</div>
+      <textarea class="field" data-k="r9" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Цикл сделки</b></div>
+      <div class="qhint">Как долго клиент принимает решение о покупке? (день / неделя / месяц)</div>
+      <textarea class="field" data-k="r10" rows="1"></textarea>
+    </div>
+
+  <div class="sec"><span class="sec-n">2</span>Целевая аудитория</div>
+  <div class="subsec">Портрет клиента</div>
+    <div class="q">
+      <div class="qlabel"><b>Аватары клиентов</b></div>
+      <div class="qhint">Кто ваш клиент? Доход, боли, интересы, должность (если B2B)</div>
+      <textarea class="field tall" data-k="r11" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Кто НЕ является вашим клиентом?</b></div>
+      <div class="qhint">Какие сегменты аудитории вы не обслуживаете / не хотите?</div>
+      <textarea class="field" data-k="r12" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Типовой путь клиента (CJM)</b></div>
+      <div class="qhint">Как клиент узнаёт о вас?</div>
+      <textarea class="field" data-k="r13" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Повторные покупки / LTV</b></div>
+      <div class="qhint">Клиенты возвращаются? Как часто? Есть ли подписка или регулярный сервис?</div>
+      <textarea class="field" data-k="r14" rows="1"></textarea>
+    </div>
+
+  <div class="sec"><span class="sec-n">3</span>Конкуренты и ниша</div>
+  <div class="subsec">Карта конкурентов</div>
+    <div class="q">
+      <div class="qlabel"><b>Прямые конкуренты</b></div>
+      <div class="qhint">Перечислите 3–5 прямых конкурентов (названия или ссылки на их сайты и рекламу), на которых мы должны ориентироваться или от которых хотим отстроиться.</div>
+      <textarea class="field tall" data-k="r15" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Минус-запросы и стоп-темы для исключения из показов</b></div>
+      <textarea class="field" data-k="r16" rows="1"></textarea>
+    </div>
+
+  <div class="sec"><span class="sec-n">4</span>Маркетинг и каналы</div>
+  <div class="subsec">Инфраструктура и аналитика</div>
+    <div class="q">
+      <div class="qlabel"><b>Бюджет (месяц)</b></div>
+      <textarea class="field" data-k="r17" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Доступы: рекламный кабинет, счётчик Метрики</b></div>
+      <textarea class="field" data-k="r18" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Что пробовали, но не сработало?</b></div>
+      <div class="qhint">Любой опыт с продвижением, который не дал результата</div>
+      <textarea class="field" data-k="r19" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Интеграция CRM с Метрикой</b></div>
+      <div class="qhint">Текущий статус и необходимость настройки</div>
+      <textarea class="field" data-k="r20" rows="1"></textarea>
+    </div>
+    <div class="q">
+      <div class="qlabel"><b>Готовые материалы</b></div>
+      <div class="qhint">Изображения, видео, фид (при наличии)</div>
+      <textarea class="field" data-k="r21" rows="1"></textarea>
+    </div>
+
+  <div class="callout warn">⚠ Чем подробнее прописано ТЗ — тем точнее стратегия и семантическое ядро. Краткие ответы снижают качество работ.</div>
+  <div class="callout">Если сервисы аналитики (Метрика, Вебмастер, Search Console) у клиента отсутствуют — специалист создаёт их самостоятельно после назначения на проект.</div>
+
+    <div class="footer-note">Ефремов Медиа · регламент постановки задач на запуск. Данные сохраняются в этом браузере автоматически.</div>
+  </div>
+
+<script>
+"use strict";
+const KEY="reglament_launch_efremov_v1";
+const sheet=document.getElementById("sheet");
+const fields=[...sheet.querySelectorAll("[data-k]")];
+function autoGrow(el){ if(el.tagName!=="TEXTAREA")return; el.style.height="auto"; el.style.height=Math.max(60,el.scrollHeight)+"px"; }
+function save(){
+  const d={}; fields.forEach(el=>{ d[el.dataset.k]= el.type==="checkbox"?el.checked:el.value; });
+  try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(_){}
+  const s=document.getElementById("saved"); s.classList.add("show"); clearTimeout(window._st);
+  window._st=setTimeout(()=>s.classList.remove("show"),1200);
+}
+function load(){
+  let d={}; try{ d=JSON.parse(localStorage.getItem(KEY)||"{}"); }catch(_){}
+  fields.forEach(el=>{ const v=d[el.dataset.k]; if(v===undefined)return; if(el.type==="checkbox")el.checked=!!v; else el.value=v; });
+  sheet.querySelectorAll("textarea").forEach(autoGrow);
+}
+sheet.addEventListener("input", e=>{ autoGrow(e.target); save(); });
+sheet.addEventListener("change", save);
+document.getElementById("pdf").addEventListener("click", ()=>window.print());
+document.getElementById("clear").addEventListener("click", ()=>{
+  if(!confirm("Очистить все поля регламента?"))return;
+  fields.forEach(el=>{ if(el.type==="checkbox")el.checked=false; else el.value=""; });
+  try{ localStorage.removeItem(KEY); }catch(_){}
+  sheet.querySelectorAll("textarea").forEach(autoGrow);
+});
+load();
+</script>
+</body>
+</html>
