@@ -78,21 +78,36 @@
         <tr>
           <th class="metric">Показатель</th>
           <th><div class="cell brand" data-k="h1" data-ph="АвтоРента">АвтоРента</div></th>
-          <th><div class="cell" data-k="h2" data-ph="Конкурент 1">Конкурент 1</div></th>
-          <th><div class="cell" data-k="h3" data-ph="Конкурент 2">Конкурент 2</div></th>
-          <th><div class="cell" data-k="h4" data-ph="Конкурент 3">Конкурент 3</div></th>
+          <th><div class="cell" data-k="h2" data-ph="Автомакси">Автомакси</div></th>
+          <th><div class="cell" data-k="h3" data-ph="Альмак прокат">Альмак прокат</div></th>
+          <th><div class="cell" data-k="h4" data-ph="Elite car">Elite car</div></th>
         </tr>
       </thead>
       <tbody id="body"></tbody>
     </table>
   </div>
 
-  <p class="note">Заполняйте ячейки прямо в таблице — данные сохраняются в этом браузере. Названия конкурентов в шапке можно переименовать (по данным файла: Автомакси, Альмак прокат, Elite car).</p>
+  <p class="note">Значения рассчитаны из файла «Видимость в ИИ‑выдаче (Авторента)». Упоминание бренда = сайт бренда процитирован в источниках ответа ИИ (или имя в тексте). «Ссылки на сайт» — всего цитирований домена. «Средняя позиция» — среднее место ссылки бренда в списке источников (меньше — лучше). Строки «запросы, где сильнее» и «страницы для доработки» — по запросам, где бренд не упомянут. Ячейки можно править, данные сохраняются в браузере.</p>
 </div>
 
 <script>
 "use strict";
-const KEY="ai_visibility_avtorenta_v1";
+const KEY="ai_visibility_avtorenta_v2";
+const VALUES={
+  r0c1:"7", r0c2:"129", r0c3:"270", r0c4:"253",
+  r1c1:"5", r1c2:"116", r1c3:"259", r1c4:"237",
+  r2c1:"71%", r2c2:"90%", r2c3:"96%", r2c4:"94%",
+  r3c1:"5", r3c2:"116", r3c3:"261", r3c4:"236",
+  r4c1:"≈ 10.6", r4c2:"≈ 7.0", r4c3:"≈ 10.0", r4c4:"≈ 9.6",
+  r5c1:"• аренда машины на месяц\n• арендовать машину на месяц",
+  r5c2:"• аренда с последующим выкупом\n• аренда авто без водителя\n• авто с выкупом",
+  r5c3:"• авто/машина в рассрочку без банка\n• аренда с последующим выкупом",
+  r5c4:"• взять машину в аренду\n• инфо-запросы по моделям (Li Xiang и др.)",
+  r6c1:"• /cars/arenda-na-mesyac/ — под «аренду на месяц»\n• /price/, /calculator-test/",
+  r6c2:"• разделы «выкуп» и «без водителя»\n• карточки /park/",
+  r6c3:"• раздел рассрочки/выкупа\n• /msk/, статьи /stati/",
+  r6c4:"• главная и /blog/ под общие арендные запросы\n• карточки /lixiang/",
+};
 const ROWS=[
   ["Всего проверенных запросов","число"],
   ["Запросы с упоминанием бренда","число"],
@@ -123,7 +138,7 @@ function load(){
   let d={}; try{ d=JSON.parse(localStorage.getItem(KEY)||"{}"); }catch(_){}
   cells.forEach(el=>{ if(el.dataset.k in d) el.innerText=d[el.dataset.k]; });
 }
-cells.forEach(el=>{ el.contentEditable="true"; el.spellcheck=false; });
+cells.forEach(el=>{ el.contentEditable="true"; el.spellcheck=false; if(VALUES[el.dataset.k]!=null) el.innerText=VALUES[el.dataset.k]; });
 document.addEventListener("input", e=>{ if(e.target.classList.contains("cell")) save(); });
 document.getElementById("pdf").addEventListener("click", ()=>window.print());
 document.getElementById("clear").addEventListener("click", ()=>{
