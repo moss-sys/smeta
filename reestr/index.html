@@ -1,0 +1,87 @@
+<title>Реестр оплат сервисов продвижения</title>
+<style>
+  :root{
+    --bg:#0e0e12; --panel:#141419; --ink:#E7E8EC; --bold:#FFFFFF;
+    --muted:#8A8D97; --faint:#6A6D77; --line:rgba(255,255,255,.09);
+    --line-2:rgba(255,255,255,.16); --link:#6AA6FF; --accent:#7C86FF;
+    --sans:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto;padding:34px 26px 60px}
+
+  .title{display:flex;align-items:center;gap:12px;margin:0 0 6px}
+  .mark{width:22px;height:22px;border-radius:6px;flex:none;
+    background:conic-gradient(from 210deg,#6AA6FF,#7C86FF,#39D3B0,#6AA6FF);box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+  .title h1{font-size:19px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--bold);margin:0}
+  .asof{color:var(--muted);font-style:italic;font-size:13.5px;margin:0 0 26px;padding-left:34px}
+
+  .scroll{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:820px}
+  thead th{text-align:left;font-weight:600;color:var(--muted);font-size:12.5px;letter-spacing:.02em;
+    padding:12px 16px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+  th.num,td.num{text-align:left}
+  tbody td{padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tbody tr:hover td{background:rgba(255,255,255,.02)}
+  .idx{color:var(--faint);font-variant-numeric:tabular-nums;width:44px}
+  .svc{font-weight:700;color:var(--bold);white-space:nowrap}
+  .svc a{color:var(--link);text-decoration:none;border-bottom:1px solid rgba(106,166,255,.35)}
+  .svc a:hover{border-bottom-color:var(--link)}
+  .desc{color:var(--muted)}
+  .sum{font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;font-weight:600}
+  .when{color:var(--ink)}
+  .freq{color:var(--muted)}
+
+  tr.total td{border-bottom:none;padding-top:20px}
+  .total .desc{color:var(--bold);font-weight:700}
+  .total .sum{color:var(--bold);font-weight:800;font-size:16px}
+
+  .summary{margin:30px 0 0;padding:22px 24px;background:var(--panel);border:1px solid var(--line-2);
+    border-radius:14px;max-width:760px}
+  .summary p{margin:0 0 12px;color:var(--ink);font-size:14.5px;line-height:1.6}
+  .summary p:last-child{margin-bottom:0}
+  .summary b{color:var(--bold);font-weight:700}
+  .summary .lead{color:var(--accent);font-weight:700}
+
+  @media (max-width:640px){ .title h1{font-size:16px} .asof{padding-left:0} }
+</style>
+
+<div class="wrap">
+  <div class="title"><span class="mark"></span><h1>Реестр оплат сервисов продвижения</h1></div>
+  <p class="asof">(по состоянию на август 2026)</p>
+
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th class="num">№</th>
+          <th>Сервис</th>
+          <th>Что делает (кратко)</th>
+          <th>Сумма (₽)</th>
+          <th>Дата оплаты</th>
+          <th>Периодичность</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="idx">1</td><td class="svc"><a href="https://keys.so" target="_blank" rel="noopener">keys.so</a></td><td class="desc">Сбор ключевых слов / Семантика</td><td class="sum">9 300</td><td class="when">19-е число</td><td class="freq">Ежемесячно</td></tr>
+        <tr><td class="idx">2</td><td class="svc">Just Magic</td><td class="desc">SEO-аудит / Анализ позиций</td><td class="sum">5 000</td><td class="when">По факту списания</td><td class="freq">~3 недели (от расходов)</td></tr>
+        <tr><td class="idx">3</td><td class="svc">ChatGPT (агентский)</td><td class="desc">AI-контент / Генерация текстов</td><td class="sum">900</td><td class="when">24-е число</td><td class="freq">Ежемесячно</td></tr>
+        <tr><td class="idx">4</td><td class="svc">ИИ Клауд</td><td class="desc">AI-обработка данных / Нейросеть</td><td class="sum">10 000</td><td class="when">10–11-е число</td><td class="freq">Ежемесячно (до 11.09)</td></tr>
+        <tr><td class="idx">5</td><td class="svc">Парсер для Авито</td><td class="desc">Сбор объявлений / Мониторинг</td><td class="sum">990</td><td class="when">До 16-го числа</td><td class="freq">Ежемесячно</td></tr>
+        <tr><td class="idx">6</td><td class="svc"><a href="https://topvisor.com" target="_blank" rel="noopener">Топвизор</a></td><td class="desc">Мониторинг позиций в ТОП</td><td class="sum">2 990</td><td class="when">По факту использования</td><td class="freq">~1 раз в 2 месяца</td></tr>
+        <tr><td class="idx">7</td><td class="svc">Checktrust</td><td class="desc">Проверка доверия / антифрод</td><td class="sum">1 990</td><td class="when">31-е число</td><td class="freq">Ежемесячно</td></tr>
+        <tr><td class="idx">8</td><td class="svc">Seoreports</td><td class="desc">SEO-отчётность / Белые отчёты</td><td class="sum">3 200</td><td class="when">7-е число</td><td class="freq">Ежемесячно</td></tr>
+        <tr><td class="idx">9</td><td class="svc"><a href="https://workspace.vk.ru" target="_blank" rel="noopener">Workspace.vk.ru</a></td><td class="desc">VK Реклама / Кабинет</td><td class="sum">1 806</td><td class="when">10-е число</td><td class="freq">Ежемесячно</td></tr>
+        <tr class="total"><td class="idx"></td><td class="svc"></td><td class="desc">ИТОГО (среднемесячный):</td><td class="sum">≈ 36 176 ₽</td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="summary">
+    <p><span class="lead">Регулярные платежи</span> — 7 сервисов с чёткой ежемесячной датой.</p>
+    <p><span class="lead">Плавающие</span> — Just Magic (зависит от ключей) и Топвизор (раз в 2 мес).</p>
+    <p><span class="lead">Общая нагрузка на бюджет</span> — ~36 тыс. ₽ в месяц стабильно.</p>
+  </div>
+</div>
