@@ -8,80 +8,174 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0}
-  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;
-    -webkit-font-smoothing:antialiased}
-  .wrap{max-width:1060px;margin:0 auto;padding:34px 26px 60px}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:34px 26px 70px}
 
-  .title{display:flex;align-items:center;gap:12px;margin:0 0 6px}
-  .mark{width:22px;height:22px;border-radius:6px;flex:none;
+  .head{display:flex;align-items:flex-start;gap:12px;margin:0 0 6px}
+  .mark{width:22px;height:22px;border-radius:6px;flex:none;margin-top:2px;
     background:conic-gradient(from 210deg,#6AA6FF,#7C86FF,#39D3B0,#6AA6FF);box-shadow:0 0 0 1px rgba(255,255,255,.08)}
-  .title h1{font-size:19px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--bold);margin:0}
-  .asof{color:var(--muted);font-style:italic;font-size:13.5px;margin:0 0 26px;padding-left:34px}
+  .head h1{font-size:19px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--bold);margin:0}
+  .head .spacer{flex:1}
+  .reset{background:transparent;border:1px solid var(--line-2);color:var(--muted);border-radius:8px;
+    padding:7px 13px;font:inherit;font-size:12.5px;cursor:pointer;white-space:nowrap}
+  .reset:hover{color:var(--ink);border-color:var(--accent)}
+  .asof{color:var(--muted);font-style:italic;font-size:13.5px;margin:0 0 24px;padding-left:34px}
 
   .scroll{overflow-x:auto}
-  table{border-collapse:collapse;width:100%;min-width:820px}
+  table{border-collapse:collapse;width:100%;min-width:880px}
   thead th{text-align:left;font-weight:600;color:var(--muted);font-size:12.5px;letter-spacing:.02em;
-    padding:12px 16px;border-bottom:1px solid var(--line-2);white-space:nowrap}
-  th.num,td.num{text-align:left}
-  tbody td{padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+    padding:12px 14px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+  tbody td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
   tbody tr:hover td{background:rgba(255,255,255,.02)}
-  .idx{color:var(--faint);font-variant-numeric:tabular-nums;width:44px}
-  .svc{font-weight:700;color:var(--bold);white-space:nowrap}
-  .svc a{color:var(--link);text-decoration:none;border-bottom:1px solid rgba(106,166,255,.35)}
-  .svc a:hover{border-bottom-color:var(--link)}
-  .desc{color:var(--muted)}
-  .sum{font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;font-weight:600}
-  .when{color:var(--ink)}
-  .freq{color:var(--muted)}
+  .idx{color:var(--faint);font-variant-numeric:tabular-nums;width:40px}
+  td.act{width:34px;text-align:center}
+
+  .cell-in{width:100%;background:transparent;border:0;outline:none;color:inherit;font:inherit;
+    padding:5px 0;border-bottom:1px solid transparent;transition:border-color .12s}
+  .cell-in:hover{border-bottom-color:var(--line)}
+  .cell-in:focus{border-bottom-color:var(--accent)}
+  .svc .cell-in{font-weight:700;color:var(--bold)}
+  .sum .cell-in{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink)}
+  .desc .cell-in,.freq .cell-in{color:var(--muted)}
+  .col-svc{width:180px}.col-sum{width:110px}.col-date{width:180px}.col-freq{width:200px}
+
+  .del{opacity:0;background:none;border:0;color:var(--faint);cursor:pointer;font-size:17px;line-height:1;
+    padding:3px 7px;border-radius:6px;transition:opacity .12s,color .12s,background .12s}
+  tr:hover .del{opacity:1}
+  .del:hover{color:#ff6b6b;background:rgba(255,255,255,.06)}
+  .del:focus-visible{opacity:1;outline:2px solid var(--accent);outline-offset:1px}
 
   tr.total td{border-bottom:none;padding-top:20px}
-  .total .desc{color:var(--bold);font-weight:700}
-  .total .sum{color:var(--bold);font-weight:800;font-size:16px}
+  .total .lbl{color:var(--bold);font-weight:700;text-align:left}
+  .total .sum-out{color:var(--bold);font-weight:800;font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap}
 
-  .summary{margin:30px 0 0;padding:22px 24px;background:var(--panel);border:1px solid var(--line-2);
-    border-radius:14px;max-width:760px}
+  .addrow{margin-top:12px;background:transparent;border:1px dashed var(--line-2);color:var(--muted);
+    padding:11px 18px;border-radius:10px;cursor:pointer;font:inherit;font-size:13px;display:inline-flex;align-items:center;gap:8px}
+  .addrow:hover{color:var(--ink);border-color:var(--accent);background:rgba(255,255,255,.02)}
+
+  .summary{margin:32px 0 0;padding:22px 24px;background:var(--panel);border:1px solid var(--line-2);border-radius:14px;max-width:760px}
   .summary p{margin:0 0 12px;color:var(--ink);font-size:14.5px;line-height:1.6}
   .summary p:last-child{margin-bottom:0}
-  .summary b{color:var(--bold);font-weight:700}
   .summary .lead{color:var(--accent);font-weight:700}
+  .hint{color:var(--faint);font-size:12px;margin:16px 0 0;padding-left:2px}
 
-  @media (max-width:640px){ .title h1{font-size:16px} .asof{padding-left:0} }
+  @media (max-width:640px){ .head h1{font-size:16px} .asof{padding-left:0} }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
 <div class="wrap">
-  <div class="title"><span class="mark"></span><h1>Реестр оплат сервисов продвижения</h1></div>
+  <div class="head">
+    <span class="mark"></span>
+    <h1>Реестр оплат сервисов продвижения</h1>
+    <span class="spacer"></span>
+    <button class="reset" id="reset">Сбросить к исходному</button>
+  </div>
   <p class="asof">(по состоянию на август 2026)</p>
 
   <div class="scroll">
     <table>
       <thead>
         <tr>
-          <th class="num">№</th>
-          <th>Сервис</th>
+          <th class="idx">№</th>
+          <th class="col-svc">Сервис</th>
           <th>Что делает (кратко)</th>
-          <th>Сумма (₽)</th>
-          <th>Дата оплаты</th>
-          <th>Периодичность</th>
+          <th class="col-sum">Сумма (₽)</th>
+          <th class="col-date">Дата оплаты</th>
+          <th class="col-freq">Периодичность</th>
+          <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr><td class="idx">1</td><td class="svc"><a href="https://keys.so" target="_blank" rel="noopener">keys.so</a></td><td class="desc">Сбор ключевых слов / Семантика</td><td class="sum">9 300</td><td class="when">19-е число</td><td class="freq">Ежемесячно</td></tr>
-        <tr><td class="idx">2</td><td class="svc">Just Magic</td><td class="desc">SEO-аудит / Анализ позиций</td><td class="sum">5 000</td><td class="when">По факту списания</td><td class="freq">~3 недели (от расходов)</td></tr>
-        <tr><td class="idx">3</td><td class="svc">ChatGPT (агентский)</td><td class="desc">AI-контент / Генерация текстов</td><td class="sum">900</td><td class="when">24-е число</td><td class="freq">Ежемесячно</td></tr>
-        <tr><td class="idx">4</td><td class="svc">ИИ Клауд</td><td class="desc">AI-обработка данных / Нейросеть</td><td class="sum">10 000</td><td class="when">10–11-е число</td><td class="freq">Ежемесячно (до 11.09)</td></tr>
-        <tr><td class="idx">5</td><td class="svc">Парсер для Авито</td><td class="desc">Сбор объявлений / Мониторинг</td><td class="sum">990</td><td class="when">До 16-го числа</td><td class="freq">Ежемесячно</td></tr>
-        <tr><td class="idx">6</td><td class="svc"><a href="https://topvisor.com" target="_blank" rel="noopener">Топвизор</a></td><td class="desc">Мониторинг позиций в ТОП</td><td class="sum">2 990</td><td class="when">По факту использования</td><td class="freq">~1 раз в 2 месяца</td></tr>
-        <tr><td class="idx">7</td><td class="svc">Checktrust</td><td class="desc">Проверка доверия / антифрод</td><td class="sum">1 990</td><td class="when">31-е число</td><td class="freq">Ежемесячно</td></tr>
-        <tr><td class="idx">8</td><td class="svc">Seoreports</td><td class="desc">SEO-отчётность / Белые отчёты</td><td class="sum">3 200</td><td class="when">7-е число</td><td class="freq">Ежемесячно</td></tr>
-        <tr><td class="idx">9</td><td class="svc"><a href="https://workspace.vk.ru" target="_blank" rel="noopener">Workspace.vk.ru</a></td><td class="desc">VK Реклама / Кабинет</td><td class="sum">1 806</td><td class="when">10-е число</td><td class="freq">Ежемесячно</td></tr>
-        <tr class="total"><td class="idx"></td><td class="svc"></td><td class="desc">ИТОГО (среднемесячный):</td><td class="sum">≈ 36 176 ₽</td><td></td><td></td></tr>
-      </tbody>
+      <tbody id="body"></tbody>
     </table>
   </div>
+  <button class="addrow" id="add">
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 2v10M2 7h10"/></svg>
+    добавить сервис
+  </button>
 
   <div class="summary">
     <p><span class="lead">Регулярные платежи</span> — 7 сервисов с чёткой ежемесячной датой.</p>
     <p><span class="lead">Плавающие</span> — Just Magic (зависит от ключей) и Топвизор (раз в 2 мес).</p>
     <p><span class="lead">Общая нагрузка на бюджет</span> — ~36 тыс. ₽ в месяц стабильно.</p>
   </div>
+  <p class="hint">Правьте ячейки прямо в таблице, добавляйте и удаляйте строки — «Итого» пересчитывается автоматически. Изменения сохраняются в этом браузере.</p>
 </div>
+
+<script>
+"use strict";
+const KEY="reestr_promo_v1";
+const DEFAULT=[
+  {svc:"keys.so",           desc:"Сбор ключевых слов / Семантика",  sum:"9 300",  date:"19-е число",            freq:"Ежемесячно"},
+  {svc:"Just Magic",        desc:"SEO-аудит / Анализ позиций",       sum:"5 000",  date:"По факту списания",      freq:"~3 недели (от расходов)"},
+  {svc:"ChatGPT (агентский)",desc:"AI-контент / Генерация текстов",  sum:"900",    date:"24-е число",            freq:"Ежемесячно"},
+  {svc:"ИИ Клауд",          desc:"AI-обработка данных / Нейросеть",  sum:"10 000", date:"10–11-е число",          freq:"Ежемесячно (до 11.09)"},
+  {svc:"Парсер для Авито",  desc:"Сбор объявлений / Мониторинг",     sum:"990",    date:"До 16-го числа",         freq:"Ежемесячно"},
+  {svc:"Топвизор",          desc:"Мониторинг позиций в ТОП",         sum:"2 990",  date:"По факту использования", freq:"~1 раз в 2 месяца"},
+  {svc:"Checktrust",        desc:"Проверка доверия / антифрод",      sum:"1 990",  date:"31-е число",            freq:"Ежемесячно"},
+  {svc:"Seoreports",        desc:"SEO-отчётность / Белые отчёты",    sum:"3 200",  date:"7-е число",             freq:"Ежемесячно"},
+  {svc:"Workspace.vk.ru",   desc:"VK Реклама / Кабинет",             sum:"1 806",  date:"10-е число",            freq:"Ежемесячно"},
+];
+const FIELDS=["svc","desc","sum","date","freq"];
+let data=[];
+
+function load(){
+  let d=null; try{ d=JSON.parse(localStorage.getItem(KEY)); }catch(_){}
+  data = Array.isArray(d)&&d.length ? d.map(r=>({svc:r.svc||"",desc:r.desc||"",sum:r.sum||"",date:r.date||"",freq:r.freq||""}))
+                                    : DEFAULT.map(r=>({...r}));
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(_){} }
+const parseSum=s=>Number(String(s).replace(/[^\d]/g,""))||0;
+const fmt=n=>n.toLocaleString("ru-RU");
+function total(){ return data.reduce((a,r)=>a+parseSum(r.sum),0); }
+
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const body=document.getElementById("body");
+
+function render(){
+  let h="";
+  data.forEach((r,i)=>{
+    h+=`<tr data-i="${i}">
+      <td class="idx">${i+1}</td>
+      <td class="svc"><input class="cell-in" data-f="svc" value="${esc(r.svc)}" placeholder="Сервис"></td>
+      <td class="desc"><input class="cell-in" data-f="desc" value="${esc(r.desc)}" placeholder="Что делает"></td>
+      <td class="sum"><input class="cell-in" data-f="sum" value="${esc(r.sum)}" placeholder="0" inputmode="numeric"></td>
+      <td class="date"><input class="cell-in" data-f="date" value="${esc(r.date)}" placeholder="дата"></td>
+      <td class="freq"><input class="cell-in" data-f="freq" value="${esc(r.freq)}" placeholder="периодичность"></td>
+      <td class="act"><button class="del" title="Удалить" aria-label="Удалить строку">×</button></td>
+    </tr>`;
+  });
+  h+=`<tr class="total">
+      <td class="idx"></td><td></td>
+      <td class="lbl">ИТОГО (среднемесячный):</td>
+      <td class="sum"><span class="sum-out" id="tot">≈ ${fmt(total())} ₽</span></td>
+      <td></td><td></td><td></td>
+    </tr>`;
+  body.innerHTML=h;
+}
+function updateTotal(){ const t=document.getElementById("tot"); if(t) t.textContent="≈ "+fmt(total())+" ₽"; }
+
+body.addEventListener("input", e=>{
+  const inp=e.target.closest(".cell-in"); if(!inp) return;
+  const i=+inp.closest("tr").dataset.i, f=inp.dataset.f;
+  data[i][f]=inp.value;
+  if(f==="sum") updateTotal();
+  save();
+});
+body.addEventListener("click", e=>{
+  const del=e.target.closest(".del"); if(!del) return;
+  const i=+del.closest("tr").dataset.i;
+  data.splice(i,1); render(); save();
+});
+document.getElementById("add").addEventListener("click", ()=>{
+  data.push({svc:"",desc:"",sum:"",date:"",freq:"Ежемесячно"});
+  render(); save();
+  const rows=body.querySelectorAll("tr[data-i]");
+  const last=rows[rows.length-1]; if(last){ const el=last.querySelector('[data-f="svc"]'); el.focus(); }
+});
+document.getElementById("reset").addEventListener("click", ()=>{
+  if(!confirm("Вернуть реестр к исходному виду? Все изменения будут потеряны."))return;
+  data=DEFAULT.map(r=>({...r})); render(); save();
+});
+
+load(); render();
+</script>
