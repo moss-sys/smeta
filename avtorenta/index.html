@@ -1,0 +1,135 @@
+<title>Видимость в ИИ-выдаче — АвтоРента vs конкуренты</title>
+<style>
+  :root{
+    --ink:#1c1c1e; --bold:#000; --muted:#6a6a72; --faint:#9a9aa2;
+    --line:#e6e6ea; --line-2:#d3d3da; --accent:#2b59ff; --bg:#f3f4f6; --sheet:#fff;
+    --sans:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .sheet{max-width:940px;margin:26px auto;background:var(--sheet);padding:40px 46px 54px;
+    box-shadow:0 1px 3px rgba(20,20,40,.06),0 10px 34px rgba(20,20,40,.08)}
+  h1{font-size:23px;font-weight:800;letter-spacing:-.01em;margin:0 0 4px;color:var(--bold)}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 26px}
+
+  .scroll{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:720px}
+  th,td{text-align:left;padding:13px 16px;vertical-align:top}
+  thead th{font-weight:700;color:var(--bold);font-size:14.5px;border-bottom:2px solid var(--line-2);white-space:nowrap}
+  thead th.metric{color:var(--muted);font-weight:600}
+  tbody tr td{border-bottom:1px solid var(--line)}
+  tbody tr:last-child td{border-bottom:none}
+  td.metric{font-weight:600;color:var(--ink);width:270px}
+  .brand{color:var(--accent)}
+
+  .cell{min-height:22px;outline:none;color:var(--ink);border-radius:4px;padding:2px 4px;margin:-2px -4px;
+    white-space:pre-wrap;transition:background .12s,box-shadow .12s}
+  .cell:hover{background:#f6f7fb}
+  .cell:focus{background:#fff;box-shadow:0 0 0 2px rgba(43,89,255,.35)}
+  .cell:empty:before{content:attr(data-ph);color:var(--faint)}
+  thead .cell{font-weight:700}
+  thead .cell.brand{color:var(--accent)}
+
+  .toolbar{position:sticky;top:0;z-index:10;background:rgba(243,244,246,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .tb{max-width:940px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:11px 46px}
+  .tb .t{font-size:12px;color:var(--muted)}
+  .tb .sp{flex:1}
+  .saved{font-size:11.5px;color:#2e9b6f;opacity:0;transition:opacity .3s}
+  .saved.show{opacity:1}
+  .btn{font-family:var(--sans);cursor:pointer;border-radius:9px;font-size:13px;font-weight:600;padding:9px 15px;
+    border:1px solid var(--line-2);background:#fff;color:var(--ink);display:inline-flex;align-items:center;gap:7px}
+  .btn:hover{border-color:var(--accent)}
+  .btn-primary{background:#111;border-color:#111;color:#fff}
+  .btn svg{width:15px;height:15px}
+  .note{margin-top:24px;color:var(--faint);font-size:12px}
+
+  @media (max-width:680px){ .sheet{padding:26px 18px} .tb{padding:11px 18px} td.metric{width:auto} }
+  @media print{
+    @page{size:A4 landscape;margin:14mm}
+    body{background:#fff}
+    .toolbar{display:none!important}
+    .sheet{box-shadow:none;margin:0;max-width:none;padding:0;width:100%}
+    .cell:hover{background:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="toolbar">
+  <div class="tb">
+    <span class="t">Видимость в ИИ-выдаче · АвтоРента</span>
+    <span class="saved" id="saved">Сохранено</span>
+    <span class="sp"></span>
+    <button class="btn" id="clear">Очистить</button>
+    <button class="btn btn-primary" id="pdf">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8m0 0L5 7m3 3 3-3M2.5 11v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2"/></svg>
+      Скачать PDF
+    </button>
+  </div>
+</div>
+
+<div class="sheet">
+  <h1>Видимость в ИИ-выдаче</h1>
+  <p class="sub">Сравнение с конкурентами по упоминаниям в ответах нейросетей</p>
+
+  <div class="scroll">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th class="metric">Показатель</th>
+          <th><div class="cell brand" data-k="h1" data-ph="АвтоРента">АвтоРента</div></th>
+          <th><div class="cell" data-k="h2" data-ph="Конкурент 1">Конкурент 1</div></th>
+          <th><div class="cell" data-k="h3" data-ph="Конкурент 2">Конкурент 2</div></th>
+          <th><div class="cell" data-k="h4" data-ph="Конкурент 3">Конкурент 3</div></th>
+        </tr>
+      </thead>
+      <tbody id="body"></tbody>
+    </table>
+  </div>
+
+  <p class="note">Заполняйте ячейки прямо в таблице — данные сохраняются в этом браузере. Названия конкурентов в шапке можно переименовать (по данным файла: Автомакси, Альмак прокат, Elite car).</p>
+</div>
+
+<script>
+"use strict";
+const KEY="ai_visibility_avtorenta_v1";
+const ROWS=[
+  ["Всего проверенных запросов","число"],
+  ["Запросы с упоминанием бренда","число"],
+  ["Доля запросов с упоминанием","%"],
+  ["Количество ссылок на сайт","число"],
+  ["Средняя позиция/место упоминания","показатель"],
+  ["Запросы, где конкурент сильнее","список"],
+  ["Приоритетные страницы для доработки","список"],
+];
+const body=document.getElementById("body");
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+let html="";
+ROWS.forEach((r,ri)=>{
+  html+=`<tr><td class="metric">${esc(r[0])}</td>`;
+  for(let c=1;c<=4;c++) html+=`<td><div class="cell" data-k="r${ri}c${c}" data-ph="${esc(r[1])}"></div></td>`;
+  html+="</tr>";
+});
+body.innerHTML=html;
+
+const cells=[...document.querySelectorAll(".cell")];
+function save(){
+  const d={}; cells.forEach(el=>d[el.dataset.k]=el.innerText);
+  try{ localStorage.setItem(KEY,JSON.stringify(d)); }catch(_){}
+  const s=document.getElementById("saved"); s.classList.add("show"); clearTimeout(window._t);
+  window._t=setTimeout(()=>s.classList.remove("show"),1100);
+}
+function load(){
+  let d={}; try{ d=JSON.parse(localStorage.getItem(KEY)||"{}"); }catch(_){}
+  cells.forEach(el=>{ if(el.dataset.k in d) el.innerText=d[el.dataset.k]; });
+}
+cells.forEach(el=>{ el.contentEditable="true"; el.spellcheck=false; });
+document.addEventListener("input", e=>{ if(e.target.classList.contains("cell")) save(); });
+document.getElementById("pdf").addEventListener("click", ()=>window.print());
+document.getElementById("clear").addEventListener("click", ()=>{
+  if(!confirm("Очистить все заполненные ячейки?"))return;
+  cells.forEach(el=>{ if(!/^h\d$/.test(el.dataset.k)) el.innerText=""; });
+  save();
+});
+load();
+</script>
